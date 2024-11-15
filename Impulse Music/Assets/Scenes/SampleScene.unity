@@ -261,7 +261,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0028991625, y: -0.018695325}
+  m_Offset: {x: -0.0028991625, y: -0.018294007}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -271,7 +271,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.23969857, y: 0.19366741}
+  m_Size: {x: 0.23969857, y: 0.19286478}
   m_EdgeRadius: 0
 --- !u!50 &271404330
 Rigidbody2D:
@@ -288,7 +288,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -405,16 +405,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentSpeeds: 0
-  GroundCheckTransform: {fileID: 0}
-  GroundCheckRadius: 0
+  GroundCheckTransform: {fileID: 1356848009}
+  GroundCheckRadius: 50
   GroundMask:
     serializedVersion: 2
-    m_Bits: 0
-  jumpforce: 3
+    m_Bits: 128
+  jumpforce: 50
   jump: 0
   isGrounded: 0
-  Bird: {fileID: 0}
-  speed: 3
+  Bird: {fileID: 271404330}
+  speed: 99999
 --- !u!1 &362868140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1705,7 @@ GameObject:
   - component: {fileID: 1356848011}
   - component: {fileID: 1356848010}
   - component: {fileID: 1356848012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: isGrounded
   m_Icon: {fileID: 0}
