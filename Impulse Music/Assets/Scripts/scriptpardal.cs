@@ -24,10 +24,10 @@ public class Movement : MonoBehaviour
         // Movimento horizontal com a velocidade baseada no enum 'CurrentSpeeds'
         transform.position += Vector3.right * velocityValues[(int)CurrentSpeeds] * Time.deltaTime;
 
-        // Verifica se o jogador pressionou o bot�o do mouse (clique esquerdo)
+        // Verifica se o jogador pressionou o bot o do mouse (clique esquerdo)
         if (Input.GetMouseButton(0))
         {
-            // Verifica se o jogador est� no ch�o antes de pular
+            // Verifica se o jogador est  no ch o antes de pular
             if (onGround())
                 moveBird = Input.GetAxis("Horizontal");
             Bird.linearVelocity = new Vector2(moveBird * speed, Bird.linearVelocity.y);
@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        // Fun��o para verificar se o jogador est� tocando o ch�o
+        // Fun  o para verificar se o jogador est  tocando o ch o
         bool onGround()
         {
             return Physics2D.OverlapCircle(GroundCheckTransform.position, GroundCheckRadius, GroundMask);
