@@ -14,12 +14,12 @@ public class Pardalberto : MonoBehaviour
     public float GroundCheckRadius;
     public LayerMask GroundMask;
 
-    public float jumpForce = 20f; // Força do pulo
-    private Rigidbody2D rb; // Referência para o Rigidbody2D
+    public float jumpForce = 20f; // Forï¿½a do pulo
+    private Rigidbody2D rb; // Referï¿½ncia para o Rigidbody2D
 
     public string initialSceneName = "MainMenu"; // Nome da cena inicial
 
-    private bool isGrounded = false; // Flag para verificar se o jogador está no chão
+    private bool isGrounded = false; // Flag para verificar se o jogador estï¿½ no chï¿½o
 
     void Start()
     {
@@ -38,7 +38,7 @@ public class Pardalberto : MonoBehaviour
         }
     }
 
-    // Função para carregar a tela inicial
+    // Funï¿½ï¿½o para carregar a tela inicial
     void LoadInitialScene()
     {
         // Carrega a cena inicial usando o nome da cena
@@ -47,44 +47,48 @@ public class Pardalberto : MonoBehaviour
 
     void Update()
     {
-        // Atualiza a verificação de estar no chão
+        // Atualiza a verificaï¿½ï¿½o de estar no chï¿½o
         isGrounded = onGround();
 
         // Movimento horizontal com a velocidade baseada no enum 'CurrentSpeeds'
         transform.position += Vector3.right * velocityValues[(int)CurrentSpeeds] * Time.deltaTime;
 
-        // Verifica se o jogador pressionou o botão do mouse (clique esquerdo)
+        // Verifica se o jogador pressionou o botï¿½o do mouse (clique esquerdo)
         if (Input.GetMouseButtonDown(0)) // Usando GetMouseButtonDown para detectar o clique
         {
-            // Verifica se o jogador está no chão antes de pular
-            if (isGrounded)
+            // Verifica se o jogador estï¿½ no chï¿½o antes de pular
+            if (isGrounded == false)
             {
-                Jump();
+                Debug.Log("Nï¿½o estï¿½ no chï¿½o. Nï¿½o pode pular!");
             }
             else
             {
-                Debug.Log("Não está no chão. Não pode pular!");
+                Jump();
             }
         }
     }
 
-    // Função para verificar se o jogador está tocando o chão
+    // Funï¿½ï¿½o para verificar se o jogador estï¿½ tocando o chï¿½o
     bool onGround()
     {
-        // A verificação do chão ocorre em torno do GroundCheckTransform
+        // A verificaï¿½ï¿½o do chï¿½o ocorre em torno do GroundCheckTransform
         bool grounded = Physics2D.OverlapCircle(GroundCheckTransform.position, GroundCheckRadius, GroundMask);
-        Debug.Log("Está no chão? " + grounded);
+        Debug.Log("Estï¿½ no chï¿½o? " + grounded);
         return grounded;
     }
 
-    // Função para fazer o personagem pular
+    // Funï¿½ï¿½o para fazer o personagem pular
     void Jump()
     {
+        // Se o jogador nï¿½o estiver no chï¿½o, nï¿½o pule
+        if (!isGrounded) return;
+
         // Zera a velocidade vertical antes de aplicar o pulo
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
 
-        // Aplica uma força para cima
+        // Aplica uma forï¿½a para cima
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
         Debug.Log("Jogador pulou!");
     }
 }
